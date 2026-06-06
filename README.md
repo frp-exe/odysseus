@@ -275,15 +275,16 @@ Or do it by hand:
 ```powershell
 git clone https://github.com/pewdiepie-archdaemon/odysseus.git
 cd odysseus
-py -3.11 -m venv venv
-venv\Scripts\Activate.ps1
+py -3.14 -m venv venv
+venv\Scripts\Activate.ps1 
 pip install -r requirements.txt
 python setup.py
 python -m uvicorn app:app --host 127.0.0.1 --port 7000
 ```
+If `venv\Scripts\Activate.ps1` is not working beacuse of PowerShell execution policy error, type 
+`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
-If `python` points at an older interpreter, use `py -3.12` (or another installed
-3.11+ version) for the venv step.
+If `py -3.11 -m venv venv` was the original version, it was not working beacuse of python latest version is available, so i used `py -3.14` (or in the future, the latest version available) for the venv step.
 
 **Requirements:** Python 3.11+. The core app (chat, agent, memory, documents,
 email, calendar, deep research) runs fully native. For full **Cookbook** background
